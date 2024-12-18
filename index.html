@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbteknik 2 - Uppgift U2a</title>
+    <meta name="Author" content="Mitt namn">
+    <meta name="Description" content="JavaScript-exempel">
+    <meta name="Keywords" content="javascript, webbteknik">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Webbteknik 2 — Uppgift U2a</h1>
+        <h2>Validering av formulär (händelser, kontroll och reguljära uttryck)</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../U1a/index.html">U1a</a></li>
+            <li><a href="../U1b/index.html">U1b</a></li>
+            <li><a href="../U2a/index.html" class="thisPage">U2a</a></li>
+            <li><a href="../U2b/index.html">U2b</a></li>
+            <li><a href="../U3/index.html">U3</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Pensionat Sjöstugan</h2>
+        <h3>Förfrågan om rumsbokning</h3>
+        <form id="booking" method="post">
+            <!-- I uppgiften skickas inte formuläret iväg, så därför finns inget action-attribut. -->
+
+            <div class="groupSets">
+                <fieldset id="date">
+                    <legend>Datum och antal nätter</legend>
+                    <label>
+                        Ankomstdag <input type="date" name="arrival" required>
+                    </label>
+                    <label>
+                        Antal nätter
+                        <select name="nrOfNights">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">1 vecka</option>
+                            <option value="14">2 veckor</option>
+                        </select>
+                    </label>
+                </fieldset>
+                <fieldset id="room">
+                    <legend>Val av rum</legend>
+                    <!-- JavaScript-koden ska lägga till pris i span-elementen efter varje rumstyp. -->
+                    <label>
+                        <input type="radio" name="roomType" value="enkel"> Enkelrum <span class="price"></span>
+                    </label>
+                    <label>
+                        <input type="radio" name="roomType" value="dubbel" checked> Dubbelrum <span class="price"></span>
+                    </label>
+                    <label>
+                        <input type="radio" name="roomType" value="familj"> Familjerum <span class="price"></span>
+                    </label>
+                    <label> --- 
+                        <select name="persons">
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <span> personer</span>
+                    </label>
+                </fieldset>
+                <fieldset id="facilities">
+                    <legend>Tillägg</legend>
+                    <!-- JavaScript-koden ska lägga till pris i span-elementen efter varje tillägg. -->
+                    <label>
+                        <input type="checkbox" name="facility" value="internet"> Internet <span class="price"></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="facility" value="parkering"> Parkering <span class="price"></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="facility" value="sjöutsikt"> Sjöutsikt <span class="price"></span>
+                    </label>
+                    <p>Kostnader per dygn.</p>
+                </fieldset>
+                <fieldset id="customer">
+                    <legend>Kund</legend>
+                    <label for="name">Namn</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="street">Gatuadress</label>
+                    <input type="text" id="street" name="street">
+                    <label for="zipcode">Postnummer</label>
+                    <div>
+                        <input type="text" id="zipcode" name="zipcode">
+                        <div class="errorMsg"></div>
+                    </div>
+                    <label for="city">Ort</label>
+                    <input type="text" id="city" name="city">
+                    <label for="telephone">Telefon</label>
+                    <div>
+                        <input type="text" id="telephone" name="telephone">
+                        <div class="errorMsg"></div>
+                    </div>
+                    <label for="email">E-post</label>
+                    <input type="text" id="email" name="email" required>
+                </fieldset>
+            </div>
+
+            <div class="groupSets">
+                <img src="img/house.png" alt="Pensionatets hus">
+                <!-- Bild av merlepik från Pixabay
+                    https://pixabay.com/sv/users/merlelepik-94573/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=213448
+                -->
+                <fieldset id="campaign">
+                    <legend>Kampanj</legend>
+                    <label>Om du har en kampanjkod, anger du den här:
+                        <input type="text" name="campaigncode">
+                    </label>
+                </fieldset>
+                <fieldset id="total">
+                    <legend>Total kostnad</legend>
+                    <!-- JavaScript-koden ska skriva totalt pris för alla val i span-elementen. -->
+                    Dina val ger en kostnad på <span id="totalCost">0</span> kr.
+                </fieldset>
+                <button type="submit" id="send">Skicka förfrågan</button>
+            </div>
+
+        </form>
+    </main>
+    <footer>
+        <p>Uppgift i Webbteknik 2</p>
+    </footer>
+</body>
+
+</html>
